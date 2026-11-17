@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nem Tudo Precisa de IA Generativa — Codecon</title>
+<style>
+:root{
+  --bg:#0b1020; --panel:#141c31; --panel2:#1b2740; --text:#f4f6fb;
+  --muted:#aab5ca; --accent:#8ee3cf; --accent2:#f4c56a; --line:#34415c;
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--text);
+font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{overflow:hidden}
+.deck{height:100%;width:100%;position:relative}
+.slide{display:none;height:100%;width:100%;padding:5.5vh 7vw 8vh;overflow:auto;
+background:radial-gradient(ellipse at 90% 8%,rgba(142,227,207,.10),transparent 34%),
+linear-gradient(135deg,#0b1020,#10182b 65%,#0b1020)}
+.slide.active{display:flex;flex-direction:column;justify-content:center}
+.kicker{font-size:clamp(12px,1.1vw,16px);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px}
+h1{font-size:clamp(38px,6vw,82px);line-height:1.03;letter-spacing:-.045em;margin:0 0 24px;max-width:1050px}
+h2{font-size:clamp(32px,4.2vw,58px);line-height:1.08;letter-spacing:-.035em;margin:0 0 28px;max-width:1100px}
+h3{font-size:clamp(20px,2vw,28px);margin:0 0 12px}
+p{font-size:clamp(17px,1.65vw,23px);line-height:1.48;color:#dce3ef;max-width:1000px;margin:0 0 16px}
+.subtitle{font-size:clamp(19px,2vw,27px);color:var(--muted);max-width:900px}
+.accent{color:var(--accent)}
+.gold{color:var(--accent2)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:rgba(20,28,49,.86);border:1px solid var(--line);border-radius:18px;padding:22px}
+.card p{font-size:clamp(15px,1.3vw,19px);color:var(--muted);margin:8px 0 0}
+.option-focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(142,227,207,.3),0 0 28px rgba(142,227,207,.18);transform:translateY(-3px)}
+.option-dimmed{opacity:.3;filter:saturate(.55)}
+.big-number{font-size:clamp(34px,4.5vw,60px);font-weight:800;color:var(--accent);letter-spacing:-.04em}
+.tag{display:inline-block;border:1px solid #52617e;border-radius:999px;padding:7px 12px;color:var(--muted);font-size:14px;margin:5px 6px 0 0}
+.quote{font-size:clamp(26px,3.2vw,44px);line-height:1.2;font-weight:650;max-width:1050px}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0}
+.flow span{background:var(--panel2);border:1px solid var(--line);padding:13px 17px;border-radius:12px;font-weight:650}
+.arrow{color:var(--accent);font-size:24px}
+.placeholder{min-height:150px;border:1.5px dashed #63718d;border-radius:16px;display:flex;align-items:center;justify-content:center;
+padding:20px;text-align:center;color:#aab5ca;background:rgba(20,28,49,.45);font-size:15px}
+.small{font-size:14px;color:var(--muted)}
+ul{padding-left:1.2em;margin:8px 0}
+li{font-size:clamp(16px,1.45vw,21px);line-height:1.45;margin:8px 0;color:#dce3ef}
+.footer{position:fixed;bottom:22px;left:7vw;right:7vw;display:flex;align-items:center;gap:16px;color:#8290a9;font-size:13px;z-index:5}
+.progress{height:3px;background:#293650;flex:1;border-radius:5px;overflow:hidden}
+.progress>i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.controls{position:fixed;right:24px;bottom:13px;display:flex;gap:8px;z-index:10}
+button{background:#1b2740;border:1px solid #52617e;color:white;border-radius:10px;padding:9px 13px;cursor:pointer}
+button:hover{border-color:var(--accent);color:var(--accent)}
+.notes{display:none;position:fixed;right:18px;top:18px;width:min(390px,36vw);max-height:70vh;overflow:auto;
+background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow:0 15px 50px #0009;z-index:20}
+.notes.show{display:block}
+.notes h3{font-size:17px}.notes p,.notes li{font-size:14px;line-height:1.45;color:#26344c}
+.notes .close{float:right}
+@media(max-width:760px){.slide{padding:5vh 6vw 12vh}.grid,.grid.three{grid-template-columns:1fr}.footer{left:6vw;right:6vw}.notes{width:90vw;max-height:55vh;top:8px;right:5vw}}
+@media print{
+ body{overflow:visible;background:white}
+ .slide{display:flex!important;page-break-after:always;height:100vh;background:#0b1020!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .footer,.controls,.notes{display:none!important}
+}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<section class="slide active" data-title="Capa">
+  <div class="kicker">Codecon Meetup · 2026</div>
+  <h1>Nem Tudo Precisa de <span class="accent">IA Generativa</span></h1>
+  <p class="subtitle">Visão Computacional na Medicina</p>
+  <div style="margin-top:42px">
+    <h3>Thaynara Soares</h3>
+    <p class="small">Engenheira de Software Sênior · Itaú Unibanco<br>Engenheira de Computação e Mestra pela UFSC</p>
+  </div>
+  <aside class="notes-content" hidden>
+    <p>Apresentação breve. Não começar explicando a dissertação. A ideia é abrir uma conversa sobre escolhas tecnológicas: nem todo problema precisa ser resolvido com a tecnologia mais comentada do momento.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="A pergunta">
+  <div class="kicker">01 · A pergunta</div>
+  <h2>O que você usaria para detectar essas células?</h2>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+    <figure style="margin:0">
+      <div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative">
+        <img src="images/slide-02-ihq-original.jpg" alt="Microfotografia original de imuno-histoquímica" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()">
+        <span>[IMAGEM ORIGINAL: images/slide-02-ihq-original.jpg]</span>
+      </div>
+      <figcaption class="small" style="text-align:center;margin-top:8px">Imagem original</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative">
+        <img src="images/Screenshot%202026-11-16%20at%2022.53.48.png" alt="Imagem de imuno-histoquímica com células detectadas e contornadas" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()">
+        <span>[IMAGEM COM DETECÇÕES: images/Screenshot 2026-11-16 at 22.53.48.png]</span>
+      </div>
+      <figcaption class="small" style="text-align:center;margin-top:8px">Gabarito (67 Negativas - 47 Positivas)</figcaption>
+    </figure>
+  </div>
+  <p style="margin:16px 0 8px;text-align:center;font-weight:700">Como vocês resolveriam esse problema?</p>
+  <div class="grid three" style="gap:10px;margin-top:0">
+    <div class="card" style="padding:12px;text-align:center"><h3 style="margin:0">Algoritmo clássico, dev raiz?</h3></div>
+    <div class="card" style="padding:12px;text-align:center"><h3 style="margin:0">Rede neural?</h3></div>
+    <div class="card" style="padding:12px;text-align:center"><h3 style="margin:0">IA generativa?</h3></div>
+  </div>
+  <aside class="notes-content" hidden>
+    <p>Mostrar primeiro a imagem original à esquerda e perguntar ao público o que usaria para detectar as células. Depois apontar o resultado à direita, com as detecções contornadas. Perguntar: “Como vocês resolveriam esse problema: IA generativa, um algoritmo clássico, dev raiz, ou uma rede neural?” Dar espaço para algumas respostas antes de avançar. Não revelar ainda qual abordagem foi usada; usar a pergunta para abrir a conversa sobre como o problema deve orientar a escolha da tecnologia.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Algoritmo clássico">
+  <div class="kicker">02 · Uma possibilidade</div>
+  <h2>Processamento de Imagem Clássico com OpenCV  algoritmo clássico</h2>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:center">
+    <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/Screenshot%202026-11-16%20at%2022.53.48.png" alt="Gabarito de referência para análise das células" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[Screenshot 2026-11-16 at 22.53.48.png]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Gabarito</figcaption></figure>
+    <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/5377_1_1_iou_classic.jpg" alt="Resultado do processamento clássico com OpenCV" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[5377_1_1_iou_classic.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Resultado · OpenCV</figcaption></figure>
+  </div>
+  <div class="grid three" style="gap:10px;margin-top:20px">
+    <div class="card option-focus" style="padding:12px;text-align:center"><h3 style="margin:0">Algoritmo clássico, dev raiz?</h3></div>
+    <div class="card" style="padding:12px;text-align:center"><h3 style="margin:0">Rede neural?</h3></div>
+    <div class="card" style="padding:12px;text-align:center"><h3 style="margin:0">IA generativa?</h3></div>
+  </div>
+  <aside class="notes-content" hidden><p>Destacar visualmente a opção do algoritmo clássico. Comparar o gabarito à esquerda com o resultado do processamento clássico com OpenCV à direita. Deixar as outras opções visíveis e normais, como alternativas ainda em consideração.</p></aside>
+</section>
+
+<section class="slide" data-title="Distância de Mahalanobis">
+  <div class="kicker">03 · Método estatístico</div>
+  <h2>Distância Polinomial de Mahalanobis</h2>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:center">
+    <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/Screenshot%202026-11-16%20at%2022.53.48.png" alt="Gabarito de células positivas e negativas" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[Screenshot 2026-11-16 at 22.53.48.png]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Gabarito</figcaption></figure>
+    <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/5377_1_1_mahala.png" alt="Resultado da distância de Mahalanobis" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[5377_1_1_mahala.png]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Resultado · Mahalanobis</figcaption></figure>
+  </div>
+  <div class="grid three" style="gap:10px;margin-top:20px">
+    <div class="card option-focus" style="padding:12px;text-align:center"><h3 style="margin:0">Algoritmo clássico, dev raiz?</h3></div>
+    <div class="card" style="padding:12px;text-align:center"><h3 style="margin:0">Rede neural?</h3></div>
+    <div class="card" style="padding:12px;text-align:center"><h3 style="margin:0">IA generativa?</h3></div>
+  </div>
+  <aside class="notes-content" hidden><p>À esquerda, mostrar o gabarito. À direita, comparar com o resultado obtido pela distância de Mahalanobis.</p></aside>
+</section>
+
+<section class="slide" data-title="Rede neural">
+  <div class="kicker">04 · Outra possibilidade</div>
+  <h2>Faster R-CNN com Backbone Resnet</h2>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+    <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/gt_IMG_5377_1_1_png.rf.4b4c85f68e8559f2e8f10cce290a2e09.jpg" alt="Gabarito de referência para avaliação da rede neural" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[gt_IMG_5377_1_1_png.rf.4b4c85f68e8559f2e8f10cce290a2e09.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Gabarito</figcaption></figure>
+    <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/det_IMG_5377_1_1_png.rf.4b4c85f68e8559f2e8f10cce290a2e09.jpg" alt="Detecções produzidas pela rede neural" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[det_IMG_5377_1_1_png.rf.4b4c85f68e8559f2e8f10cce290a2e09.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Resultado da rede neural</figcaption></figure>
+  </div>
+  <div class="grid three" style="gap:10px;margin-top:20px">
+    <div class="card option-dimmed" style="padding:12px;text-align:center"><h3 style="margin:0">Algoritmo clássico, dev raiz?</h3></div>
+    <div class="card option-focus" style="padding:12px;text-align:center"><h3 style="margin:0">Rede neural?</h3></div>
+    <div class="card option-dimmed" style="padding:12px;text-align:center"><h3 style="margin:0">IA generativa?</h3></div>
+  </div>
+  <aside class="notes-content" hidden><p>Agora destacar a opção de rede neural. Comparar o gabarito à esquerda com as detecções do modelo à direita. Manter as outras duas opções visíveis, mas apagadas, para guiar o olhar à alternativa em foco.</p></aside>
+</section>
+
+<section class="slide" data-title="IA generativa">
+  <div class="kicker">05 · E a IA generativa?</div>
+  <h2>E se usássemos IA generativa?</h2>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+    <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/Gemini_Generated_Image_8k9mhh8k9mhh8k9m.jpg" alt="Exemplo gerado por IA generativa de análise de IHQ" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[Gemini_Generated_Image_8k9mhh8k9mhh8k9m.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Exemplo de análise gerada</figcaption></figure>
+    <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/Gemini_Generated_Image_d9rygnd9rygnd9ry.jpg" alt="Exemplo gerado por IA generativa com contagens de células" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[Gemini_Generated_Image_d9rygnd9rygnd9ry.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Exemplo com contagens geradas</figcaption></figure>
+  </div>
+  <p class="small" style="margin:8px 0 0;text-align:center">Exemplos gerados por IA; contagens ilustrativas, não validadas.</p>
+  <div class="grid three" style="gap:10px;margin-top:20px">
+    <div class="card option-dimmed" style="padding:12px;text-align:center"><h3 style="margin:0">Algoritmo clássico, dev raiz?</h3></div>
+    <div class="card option-dimmed" style="padding:12px;text-align:center"><h3 style="margin:0">Rede neural?</h3></div>
+    <div class="card option-focus" style="padding:12px;text-align:center"><h3 style="margin:0">IA generativa?</h3></div>
+  </div>
+  <aside class="notes-content" hidden><p>Por fim, destacar IA generativa e apagar visualmente as duas outras opções. A pergunta continua aberta; ainda não afirmar que esta foi a abordagem escolhida.</p></aside>
+</section>
+
+<section class="slide" data-title="A provocação">
+  <div class="kicker">06 · A provocação</div>
+  <h2>Quando pensamos em um projeto de tecnologia hoje...</h2>
+  <p class="quote">...é quase automático imaginar que existe um <span class="accent">LLM</span> em algum lugar, não é?</p>
+  <div class="grid">
+    <div class="card"><div class="big-number">2026</div><p>Hype de IA generativa, agentes e aplicações com LLMs.</p></div>
+    <div class="card"><div class="big-number">2019</div><p>O ano em que começou a história do algoritmo deste projeto.</p></div>
+  </div>
+  <p style="margin-top:26px;color:var(--accent2);font-weight:700">E se eu disser que o algoritmo principal não usa LLMs?</p>
+  <aside class="notes-content" hidden>
+    <p>Fazer uma pausa depois da pergunta. Perguntar rapidamente ao público quem já usou LLM em algum projeto. Explicar que a palestra não é contra IA generativa: é sobre escolher a ferramenta de acordo com o problema.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Tudo começou em 2019">
+  <div class="kicker">07 · A origem</div>
+  <h2>Tudo começou com um problema real</h2>
+  <p>Na análise de câncer de mama, a imuno-histoquímica ajuda a avaliar biomarcadores importantes para decisões terapêuticas.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>O cenário</h3>
+      <ul>
+        <li>Quantificação de receptores hormonais, como ER e PR.</li>
+        <li>Análise tradicional frequentemente manual.</li>
+        <li>Subjetividade e reprodutibilidade são desafios.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>A oportunidade</h3>
+      <ul>
+        <li>Usar processamento de imagens para apoiar a análise.</li>
+        <li>Investigar alternativas de menor custo.</li>
+        <li> aproximar tecnologia e rotina de patologia.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Inserir aqui uma imagem ilustrativa de lâmina histopatológica/IHQ, autorizada para apresentação.</p>
+  <aside class="notes-content" hidden>
+    <p>Explicar IHQ em linguagem simples: uma técnica que marca proteínas nas células para ajudar a caracterizar o tumor. Evitar entrar em condutas clínicas. Reforçar que a proposta computacional é apoiar quantificação, não substituir o patologista.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="O desafio">
+  <div class="kicker">08 · O problema</div>
+  <h2>Digitalizar uma lâmina inteira ainda pode exigir um investimento muito alto</h2>
+  <p>Hoje, scanners WSI especializados capturam a lâmina inteira para visualização digital.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="big-number" style="font-size:clamp(27px,3.3vw,44px)">Dezenas a centenas<br>de milhares de dólares</div>
+      <p>Faixa indicativa para scanners WSI; varia conforme capacidade, resolução, fabricante e recursos.</p>
+    </div>
+    <div class="card">
+      <h3>E o custo não termina no equipamento</h3>
+      <p>Armazenamento, infraestrutura de TI, processamento, software, manutenção e suporte também entram na conta.</p>
+    </div>
+  </div>
+  <p class="quote" style="margin-top:24px;color:var(--accent2)">Precisamos de toda essa infraestrutura para começar?</p>
+  <aside class="notes-content" hidden>
+    <p>Quando falamos em patologia digital, já existem soluções no mercado que permitem digitalizar uma lâmina inteira e trabalhar com essas imagens diretamente no computador. O problema é que essas soluções utilizam equipamentos bastante especializados, chamados scanners WSI, que podem custar dezenas ou até centenas de milhares de dólares. E não estamos falando apenas do equipamento: também precisamos considerar armazenamento, infraestrutura, processamento e manutenção. Isso acaba criando uma barreira para laboratórios e instituições que não possuem tantos recursos para investir nesse tipo de tecnologia. Foi nesse contexto que surgiu uma das motivações do nosso projeto: será que precisamos de toda essa infraestrutura para começar a trabalhar com imagens digitais e desenvolver soluções de análise? A faixa exibida é indicativa da literatura e não deve ser atribuída à dissertação sem confirmar o trecho e a referência.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="A arquitetura">
+  <div class="kicker">09 · A solução</div>
+  <h2>Uma arquitetura de baixo custo: Mobile + Cloud</h2>
+  <p>A dissertação propõe uma arquitetura que integra captura por smartphone, processamento em nuvem e visualização dos resultados em ambiente web/aplicativo.</p>
+  <div class="flow">
+    <span>Microscópio + smartphone</span><b class="arrow">→</b>
+    <span>Aplicativo</span><b class="arrow">→</b>
+    <span>Serviços em nuvem</span><b class="arrow">→</b>
+    <span>Máscaras e resultados</span>
+  </div>
+  <div class="placeholder">[INSERIR diagrama da arquitetura real da dissertação ou captura do aplicativo]</div>
+  <aside class="notes-content" hidden>
+    <p>Fazer a transição do slide anterior: “Foi aí que começamos a explorar uma alternativa: utilizar um smartphone acoplado a um microscópio e aproveitar a infraestrutura de processamento em nuvem.” A proposta explora microfotografias de smartphone e processamento em nuvem. Não afirmar que substitui scanners ou está pronta para uso clínico.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="O que é IHQ">
+  <div class="kicker">10 · Entendendo a imagem</div>
+  <h2>O que é imuno-histoquímica?</h2>
+  <p>É uma técnica que usa marcadores para revelar proteínas específicas no tecido. Na análise do câncer de mama, por exemplo, ajuda a observar biomarcadores como ER e PR.</p>
+  <div class="grid">
+    <div class="placeholder" style="min-height:clamp(220px,36vh,390px)">[INSERIR IMAGEM 1: tecido corado por IHQ]</div>
+    <div class="placeholder" style="min-height:clamp(220px,36vh,390px)">[INSERIR IMAGEM 2: detalhe ampliado com células/núcleos marcados]</div>
+  </div>
+  <p class="small" style="margin-top:16px">A coloração ajuda a visualizar a presença dos marcadores; a pesquisa busca apoiar a quantificação dessas imagens.</p>
+  <aside class="notes-content" hidden>
+    <p>Explicar de forma simples: a imuno-histoquímica, ou IHQ, usa anticorpos e uma reação de coloração para evidenciar proteínas específicas em uma amostra de tecido. Para o público, basta entender que a imagem colorida dá pistas sobre a presença dos biomarcadores nas células. Usar as duas imagens para mostrar primeiro a lâmina e depois uma região ampliada. A análise computacional é uma pesquisa para apoiar a quantificação, não uma ferramenta clínica pronta nem substituta do patologista.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Três abordagens">
+  <div class="kicker">11 · A comparação</div>
+  <h2>Não foi uma disputa entre “IA” e “não IA”</h2>
+  <p>A pesquisa implementou e comparou três abordagens para segmentação nuclear:</p>
+  <div class="grid three">
+    <div class="card"><span class="tag">Método clássico</span><h3>Limiarização adaptativa</h3><p>Processamento de imagem tradicional.</p></div>
+    <div class="card"><span class="tag">Método estatístico</span><h3>Distância de Mahalanobis</h3><p>Com expansão polinomial.</p></div>
+    <div class="card"><span class="tag">Deep Learning</span><h3>Faster R-CNN</h3><p>Abordagem baseada em aprendizado profundo.</p></div>
+  </div>
+  <p style="margin-top:24px;color:var(--accent2)">A pergunta não era qual tecnologia está na moda, mas qual funciona melhor para o problema.</p>
+  <aside class="notes-content" hidden>
+    <p>Este é um ponto importante para precisão conceitual: Deep Learning também é IA. A provocação da palestra é sobre não depender de LLMs/IA generativa para toda solução. Não chamar o projeto inteiro de “sem IA”.</p>
+    <p>Comentar que também pensamos em usar IA generativa para essa tarefa. A decisão precisa considerar se a abordagem oferece confiabilidade adequada para analisar imagens médicas; não afirmar genericamente que IA generativa é insegura. Mencionar o artigo que discute essa questão: <strong>[ADICIONAR LINK DO ARTIGO]</strong>.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Resultados técnicos">
+  <div class="kicker">12 · O que os resultados mostraram</div>
+  <h2>Cada abordagem teve um comportamento diferente</h2>
+  <div class="grid three">
+    <div class="card">
+      <div class="big-number">&lt;10%</div>
+      <h3>Recall</h3>
+      <p>Método clássico para células negativas: limitação importante na detecção.</p>
+    </div>
+    <div class="card">
+      <div class="big-number">≈0,76</div>
+      <h3>F1-Score</h3>
+      <p>Método estatístico: desempenho mais equilibrado.</p>
+    </div>
+    <div class="card">
+      <div class="big-number">&gt;82%</div>
+      <h3>Acurácia global</h3>
+      <p>Faster R-CNN: melhor desempenho geral reportado na avaliação.</p>
+    </div>
+  </div>
+  <p class="small" style="margin-top:20px">Valores resumidos do abstract da dissertação. Conferir tabelas, classes, conjunto de teste e métricas exatas antes da apresentação final.</p>
+  <aside class="notes-content" hidden>
+    <p>Explicar sem exagerar: o método clássico teve limitações severas, o estatístico foi mais equilibrado e o Faster R-CNN teve o melhor resultado global, com robustez ao pleomorfismo celular. Não comparar métricas diferentes como se fossem equivalentes. Abrir a dissertação para conferir os detalhes experimentais.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Demonstração visual">
+  <div class="kicker">13 · Na prática</div>
+  <h2>Do campo microscópico à visualização das máscaras</h2>
+  <div class="grid">
+    <div class="placeholder">[IMAGEM 1: microfotografia original]</div>
+    <div class="placeholder">[IMAGEM 2: resultado da segmentação / máscara]</div>
+  </div>
+  <p style="margin-top:22px">Mostrar o que o sistema recebe, o que processa e o que devolve ao usuário.</p>
+  <p class="small">Se possível, incluir um pequeno vídeo ou GIF do aplicativo funcionando.</p>
+  <aside class="notes-content" hidden>
+    <p>Este é o slide para tornar a pesquisa concreta. Usar uma imagem real e uma saída real do trabalho. Explicar visualmente o que foi identificado e o que ainda exige avaliação especializada. Se houver demonstração ao vivo, ter um vídeo gravado como plano B.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Linha do tempo">
+  <div class="kicker">14 · A jornada</div>
+  <h2>De um projeto acadêmico a uma trajetória de inovação</h2>
+  <div class="flow">
+    <span>2018**<br><small>Início do algoritmo</small></span><b class="arrow">→</b>
+    <span>TCCs<br><small>Continuidade</small></span><b class="arrow">→</b>
+    <span>Mestrado<br><small>Comparação e validação</small></span><b class="arrow">→</b>
+    <span>2025–2026<br><small>Reconhecimento e inovação</small></span>
+  </div>
+  <div class="placeholder">[INSERIR linha do tempo com datas reais, fotos, nomes dos trabalhos e marcos do projeto]</div>
+  <aside class="notes-content" hidden>
+    <p>Confirmar a cronologia exata: em que ano foi cada TCC, quando o projeto ficou parado ou foi retomado, quando começou o mestrado e quando cada resultado aconteceu. Não sugerir continuidade ininterrupta se houve intervalos.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Conquistas">
+  <div class="kicker">15 · Os resultados além do algoritmo</div>
+  <h2>O que essa jornada já gerou?</h2>
+  <div class="grid three">
+    <div class="card"><div class="big-number">1</div><h3>Registro</h3><p>Registro de propriedade intelectual.</p></div>
+    <div class="card"><div class="big-number">1</div><h3>Prêmio</h3><p>Melhor projeto de aceleração de startup.</p></div>
+    <div class="card"><div class="big-number">2</div><h3>Artigos</h3><p>Publicações na IEEE.</p></div>
+    <div class="card"><div class="big-number">1</div><h3>Pôster</h3><p>Apresentação em conferência de patologia.</p></div>
+    <div class="card"><div class="big-number">1</div><h3>Dissertação</h3><p>Pesquisa de mestrado concluída.</p></div>
+    <div class="card"><div class="big-number">2</div><h3>TCCs</h3><p>Trabalhos de conclusão relacionados à trajetória.</p></div>
+  </div>
+  <p class="small" style="margin-top:16px">Confirmar se todos os resultados são do mesmo projeto e identificar corretamente os anos e instituições.</p>
+  <aside class="notes-content" hidden>
+    <p>Evitar apenas listar números. Escolher 2 ou 3 conquistas para contar rapidamente o que representaram: publicação, validação externa, reconhecimento e continuidade. Incluir logos/capas/fotos se houver autorização.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="IA generativa na pesquisa">
+  <div class="kicker">16 · A IA generativa entra em cena</div>
+  <h2>O algoritmo não usa LLMs. A pesquisa teve apoio de IA.</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Onde a IA generativa ajudou</h3>
+      <ul>
+        <li>Explorar e compreender conceitos.</li>
+        <li>Apoiar a organização e revisão de textos.</li>
+        <li>Ajudar em tarefas de programação e documentação, se aplicável.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Onde exige cuidado</h3>
+      <ul>
+        <li>Conferir referências e afirmações.</li>
+        <li>Não delegar avaliação científica à ferramenta.</li>
+        <li>Preservar autoria, responsabilidade e rastreabilidade.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Personalizar com exemplos verdadeiros das ferramentas e usos que você realmente fez durante o mestrado.</p>
+  <aside class="notes-content" hidden>
+    <p>Separar claramente duas coisas: IA generativa como ferramenta de apoio ao processo de pesquisa e os métodos usados no framework. Não atribuir usos específicos à sua experiência sem confirmar. Contar um exemplo concreto do que ajudou e outro em que foi necessário desconfiar/verificar.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Da pesquisa à inovação">
+  <div class="kicker">17 · O próximo passo</div>
+  <h2>Como fazer a pesquisa continuar depois da universidade?</h2>
+  <p>Uma pesquisa pode abrir caminhos para colaboração, propriedade intelectual, empreendedorismo e financiamento.</p>
+  <div class="grid">
+    <div class="card"><h3>Oportunidades na saúde</h3><p>Patologia digital, ferramentas de apoio, acessibilidade e pesquisa aplicada.</p></div>
+    <div class="card"><h3>Fomento à inovação</h3><p>Editais e programas podem apoiar a evolução de uma prova de conceito.</p></div>
+  </div>
+  <div class="card" style="margin-top:18px">
+    <h3>O caso do projeto</h3>
+    <p>Aprovação em edital de inovação da FAPESC, com previsão de recurso para financiar a atuação de um desenvolvedor na continuidade do aplicativo.</p>
+  </div>
+  <aside class="notes-content" hidden>
+    <p>Explicar o edital específico, o que foi aprovado, qual é o papel do recurso e o que ainda falta para dar continuidade ao aplicativo. Não generalizar: deixar claro que editais têm regras, contrapartidas e prestação de contas. Confirmar nome oficial do programa e modalidade de bolsa/remuneração.</p>
+  </aside>
+</section>
+
+<section class="slide" data-title="Fechamento">
+  <div class="kicker">18 · Para levar com você</div>
+  <h2>Nem tudo precisa ser generativo.</h2>
+  <p class="quote">A melhor tecnologia não é necessariamente a mais nova. É aquela que faz sentido para o problema que queremos resolver.</p>
+  <p style="margin-top:34px" class="accent">Obrigada!</p>
+  <p class="small">Thaynara Soares · Codecon Meetup</p>
+  <aside class="notes-content" hidden>
+    <p>Retomar a pergunta do início e responder: não precisamos de LLMs para toda solução. Mas também não se trata de escolher métodos clássicos por nostalgia. É preciso avaliar o problema, os dados, o desempenho, o custo, a robustez e o contexto de uso. Agradecer e abrir para perguntas, se houver tempo.</p>
+  </aside>
+</section>
+
+</div>
+
+<div class="footer">
+  <span id="counter">1 / 19</span>
+  <div class="progress"><i id="bar"></i></div>
+  <span id="slideName">Capa</span>
+</div>
+<div class="controls">
+  <button onclick="toggleNotes()">Notas (N)</button>
+  <button onclick="prev()">←</button>
+  <button onclick="next()">→</button>
+  <button onclick="document.documentElement.requestFullscreen?.()">Tela cheia</button>
+</div>
+<div class="notes" id="notes"><button class="close" onclick="toggleNotes()">Fechar</button><div id="notesText"></div></div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let index=0;
+function show(i){index=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===index));
+document.getElementById('counter').textContent=(index+1)+' / '+slides.length;
+document.getElementById('bar').style.width=((index+1)/slides.length*100)+'%';
+document.getElementById('slideName').textContent=slides[index].dataset.title;
+const note=slides[index].querySelector('.notes-content');
+document.getElementById('notesText').innerHTML=note?note.innerHTML:'<p>Sem notas para este slide.</p>';}
+function next(){show(index+1)}function prev(){show(index-1)}
+function toggleNotes(){document.getElementById('notes').classList.toggle('show')}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();next()}
+if(e.key==='ArrowLeft'){prev()}if(e.key.toLowerCase()==='n'){toggleNotes()}
+if(e.key==='Home'){show(0)}if(e.key==='End'){show(slides.length-1)}});
+show(0);
+</script>
+</body>
+</html>
