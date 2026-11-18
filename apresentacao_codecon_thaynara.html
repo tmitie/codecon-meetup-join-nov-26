@@ -19,25 +19,30 @@ background:radial-gradient(ellipse at 90% 8%,rgba(142,227,207,.10),transparent 3
 linear-gradient(135deg,#0b1020,#10182b 65%,#0b1020)}
 .slide.active{display:flex;flex-direction:column;justify-content:center}
 .kicker{font-size:clamp(12px,1.1vw,16px);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:18px}
-h1{font-size:clamp(38px,6vw,82px);line-height:1.03;letter-spacing:-.045em;margin:0 0 24px;max-width:1050px}
-h2{font-size:clamp(32px,4.2vw,58px);line-height:1.08;letter-spacing:-.035em;margin:0 0 28px;max-width:1100px}
+h1{font-size:clamp(38px,6vw,82px);line-height:1.03;letter-spacing:-.045em;margin:0 0 24px;max-width:100%}
+h2{font-size:clamp(32px,4.2vw,58px);line-height:1.08;letter-spacing:-.035em;margin:0 0 28px;max-width:100%}
 h3{font-size:clamp(20px,2vw,28px);margin:0 0 12px}
-p{font-size:clamp(17px,1.65vw,23px);line-height:1.48;color:#dce3ef;max-width:1000px;margin:0 0 16px}
-.subtitle{font-size:clamp(19px,2vw,27px);color:var(--muted);max-width:900px}
+p{font-size:clamp(17px,1.65vw,23px);line-height:1.48;color:#dce3ef;max-width:100%;margin:0 0 16px}
+.subtitle{font-size:clamp(19px,2vw,27px);color:var(--muted);max-width:100%}
 .accent{color:var(--accent)}
 .gold{color:var(--accent2)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
 .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .card{background:rgba(20,28,49,.86);border:1px solid var(--line);border-radius:18px;padding:22px}
+.approach-card .tag{margin-bottom:calc(14px + 2em)}
 .card p{font-size:clamp(15px,1.3vw,19px);color:var(--muted);margin:8px 0 0}
 .option-focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(142,227,207,.3),0 0 28px rgba(142,227,207,.18);transform:translateY(-3px)}
 .option-dimmed{opacity:.3;filter:saturate(.55)}
 .big-number{font-size:clamp(34px,4.5vw,60px);font-weight:800;color:var(--accent);letter-spacing:-.04em}
 .tag{display:inline-block;border:1px solid #52617e;border-radius:999px;padding:7px 12px;color:var(--muted);font-size:14px;margin:5px 6px 0 0}
-.quote{font-size:clamp(26px,3.2vw,44px);line-height:1.2;font-weight:650;max-width:1050px}
+.quote{font-size:clamp(26px,3.2vw,44px);line-height:1.2;font-weight:650;max-width:100%}
 .flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:26px 0}
 .flow span{background:var(--panel2);border:1px solid var(--line);padding:13px 17px;border-radius:12px;font-weight:650}
 .arrow{color:var(--accent);font-size:24px}
+.architecture-flow{justify-content:center;gap:clamp(6px,.8vw,14px);width:100%;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.architecture-flow::-webkit-scrollbar{display:none}
+.architecture-flow span{flex:0 0 auto;font-size:clamp(16px,1.55vw,26px);padding:clamp(12px,1.25vw,20px) clamp(14px,1.5vw,24px);text-align:center;white-space:nowrap}
+.architecture-flow .arrow{flex:0 0 auto;font-size:clamp(22px,2.2vw,36px)}
 .placeholder{min-height:150px;border:1.5px dashed #63718d;border-radius:16px;display:flex;align-items:center;justify-content:center;
 padding:20px;text-align:center;color:#aab5ca;background:rgba(20,28,49,.45);font-size:15px}
 .small{font-size:14px;color:var(--muted)}
@@ -66,11 +71,11 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
 <div class="deck">
 
 <section class="slide active" data-title="Capa">
-  <div class="kicker">Codecon Meetup · 2026</div>
-  <h1>Nem Tudo Precisa de <span class="accent">IA Generativa</span></h1>
+  <div class="kicker">Codecon Meetup · Joinville · 2026</div>
+  <h1>Nem Tudo Precisa de<br><span class="accent" style="white-space:nowrap">IA Generativa</span></h1>
   <p class="subtitle">Visão Computacional na Medicina</p>
   <div style="margin-top:42px">
-    <h3>Thaynara Soares</h3>
+    <h3 class="accent">Thaynara Mitie</h3>
     <p class="small">Engenheira de Software Sênior · Itaú Unibanco<br>Engenheira de Computação e Mestra pela UFSC</p>
   </div>
   <aside class="notes-content" hidden>
@@ -78,8 +83,42 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
   </aside>
 </section>
 
+<section class="slide" data-title="Publicações na IEEE CBMS">
+  <div class="kicker">01 · Um projeto fora do hype</div>
+  <h2>E se um projeto sem IA generativa no núcleo chegasse a isto?</h2>
+  <p class="quote">Duas publicações na <span class="accent">IEEE CBMS</span>.</p>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+    <figure style="margin:0"><div class="placeholder" style="min-height:clamp(180px,32vh,340px)">[ESPAÇO PARA IMAGEM · PUBLICAÇÃO 1]</div><figcaption class="small" style="text-align:center;margin-top:8px">Publicação 1 · IEEE CBMS</figcaption></figure>
+    <figure style="margin:0"><div class="placeholder" style="min-height:clamp(180px,32vh,340px)">[ESPAÇO PARA IMAGEM · PUBLICAÇÃO 2]</div><figcaption class="small" style="text-align:center;margin-top:8px">Publicação 2 · IEEE CBMS</figcaption></figure>
+  </div>
+  <aside class="notes-content" hidden><p>Usar as capas, primeiras páginas ou imagens das duas publicações. Fazer a provocação sem sugerir que IA generativa não tenha valor: o ponto é que o projeto começou antes do hype e gerou resultados relevantes com métodos escolhidos para o problema. Em seguida, mostrar que as publicações foram apenas parte da trajetória.</p></aside>
+</section>
+
+<section class="slide" data-title="Registro e dissertação">
+  <div class="kicker">02 · A pesquisa ganhou forma</div>
+  <h2>E também virou software e pesquisa de mestrado</h2>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+    <figure style="margin:0"><div class="placeholder" style="min-height:clamp(200px,36vh,380px)">[ESPAÇO PARA IMAGEM · REGISTRO DE SOFTWARE]</div><figcaption class="small" style="text-align:center;margin-top:8px">Registro de software</figcaption></figure>
+    <figure style="margin:0"><div class="placeholder" style="min-height:clamp(200px,36vh,380px)">[ESPAÇO PARA IMAGEM · DISSERTAÇÃO]</div><figcaption class="small" style="text-align:center;margin-top:8px">Dissertação de mestrado</figcaption></figure>
+  </div>
+  <aside class="notes-content" hidden><p>Substituir os espaços por uma imagem do certificado/registro e pela capa da dissertação. Apresentar os dois como desdobramentos da pesquisa, sem transformar o slide em uma lista de credenciais.</p></aside>
+</section>
+
+<section class="slide" data-title="Prêmios e inovação">
+  <div class="kicker">03 · Reconhecimento e inovação</div>
+  <h2>A trajetória também foi reconhecida fora da universidade</h2>
+  <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+    <figure style="margin:0"><div class="placeholder" style="min-height:clamp(200px,36vh,380px)">[ESPAÇO PARA IMAGEM · PRÊMIO DE INCENTIVO À INOVAÇÃO]</div><figcaption class="small" style="text-align:center;margin-top:8px">Prêmio de incentivo à inovação</figcaption></figure>
+    <figure style="margin:0"><div class="placeholder" style="min-height:clamp(200px,36vh,380px)">[ESPAÇO PARA IMAGEM · PRÊMIO DA SOCIEDADE BRASILEIRA DE PATOLOGIA]</div><figcaption class="small" style="text-align:center;margin-top:8px">Prêmio da Sociedade Brasileira de Patologia</figcaption></figure>
+  </div>
+  <aside class="notes-content" hidden>
+    <p>Inserir imagens dos dois prêmios. Contar em uma frase o que cada reconhecimento representou para o projeto. Fazer a transição para a pergunta que guia a palestra: que problema estava sendo resolvido e quais escolhas técnicas levaram até esses resultados?</p>
+    <p><strong>Referência do prêmio da Sociedade Brasileira de Patologia:</strong> <a href="https://congressodepatologia.org.br/confira-a-relacao-de-trabalhos-premiados-no-cbpato-2024-sbp-news-05-06-2024/" target="_blank" rel="noopener">Relação de trabalhos premiados no CBPato 2024</a>.</p>
+  </aside>
+</section>
+
 <section class="slide" data-title="A pergunta">
-  <div class="kicker">01 · A pergunta</div>
+  <div class="kicker">04 · A pergunta</div>
   <h2>O que você usaria para detectar essas células?</h2>
   <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
     <figure style="margin:0">
@@ -109,8 +148,8 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
 </section>
 
 <section class="slide" data-title="Algoritmo clássico">
-  <div class="kicker">02 · Uma possibilidade</div>
-  <h2>Processamento de Imagem Clássico com OpenCV  algoritmo clássico</h2>
+  <div class="kicker">05 · Uma possibilidade</div>
+  <h2>Processamento de Imagem Clássico com OpenCV</h2>
   <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:center">
     <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/Screenshot%202026-11-16%20at%2022.53.48.png" alt="Gabarito de referência para análise das células" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[Screenshot 2026-11-16 at 22.53.48.png]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Gabarito</figcaption></figure>
     <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/5377_1_1_iou_classic.jpg" alt="Resultado do processamento clássico com OpenCV" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[5377_1_1_iou_classic.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Resultado · OpenCV</figcaption></figure>
@@ -124,8 +163,8 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
 </section>
 
 <section class="slide" data-title="Distância de Mahalanobis">
-  <div class="kicker">03 · Método estatístico</div>
-  <h2>Distância Polinomial de Mahalanobis</h2>
+  <div class="kicker">06 · Método estatístico</div>
+  <h2>Algoritmo Híbrido - Distância Polinomial de Mahalanobis</h2>
   <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:center">
     <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/Screenshot%202026-11-16%20at%2022.53.48.png" alt="Gabarito de células positivas e negativas" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[Screenshot 2026-11-16 at 22.53.48.png]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Gabarito</figcaption></figure>
     <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/5377_1_1_mahala.png" alt="Resultado da distância de Mahalanobis" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[5377_1_1_mahala.png]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Resultado · Mahalanobis</figcaption></figure>
@@ -139,7 +178,7 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
 </section>
 
 <section class="slide" data-title="Rede neural">
-  <div class="kicker">04 · Outra possibilidade</div>
+  <div class="kicker">07 · Outra possibilidade</div>
   <h2>Faster R-CNN com Backbone Resnet</h2>
   <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
     <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/gt_IMG_5377_1_1_png.rf.4b4c85f68e8559f2e8f10cce290a2e09.jpg" alt="Gabarito de referência para avaliação da rede neural" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[gt_IMG_5377_1_1_png.rf.4b4c85f68e8559f2e8f10cce290a2e09.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Gabarito</figcaption></figure>
@@ -154,13 +193,12 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
 </section>
 
 <section class="slide" data-title="IA generativa">
-  <div class="kicker">05 · E a IA generativa?</div>
+  <div class="kicker">08 · E a IA generativa?</div>
   <h2>E se usássemos IA generativa?</h2>
   <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
     <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/Gemini_Generated_Image_8k9mhh8k9mhh8k9m.jpg" alt="Exemplo gerado por IA generativa de análise de IHQ" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[Gemini_Generated_Image_8k9mhh8k9mhh8k9m.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Exemplo de análise gerada</figcaption></figure>
     <figure style="margin:0"><div class="placeholder image-frame" style="min-height:clamp(220px,39vh,410px);padding:0;overflow:hidden;position:relative"><img src="images/Gemini_Generated_Image_d9rygnd9rygnd9ry.jpg" alt="Exemplo gerado por IA generativa com contagens de células" style="width:100%;height:100%;min-height:inherit;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()"><span>[Gemini_Generated_Image_d9rygnd9rygnd9ry.jpg]</span></div><figcaption class="small" style="text-align:center;margin-top:8px">Exemplo com contagens geradas</figcaption></figure>
   </div>
-  <p class="small" style="margin:8px 0 0;text-align:center">Exemplos gerados por IA; contagens ilustrativas, não validadas.</p>
   <div class="grid three" style="gap:10px;margin-top:20px">
     <div class="card option-dimmed" style="padding:12px;text-align:center"><h3 style="margin:0">Algoritmo clássico, dev raiz?</h3></div>
     <div class="card option-dimmed" style="padding:12px;text-align:center"><h3 style="margin:0">Rede neural?</h3></div>
@@ -170,21 +208,22 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
 </section>
 
 <section class="slide" data-title="A provocação">
-  <div class="kicker">06 · A provocação</div>
-  <h2>Quando pensamos em um projeto de tecnologia hoje...</h2>
+  <div class="kicker">09 · A provocação</div>
+  <h2>Quando pensamos em um projeto de tecnologia hoje...</h2></br></br>
   <p class="quote">...é quase automático imaginar que existe um <span class="accent">LLM</span> em algum lugar, não é?</p>
   <div class="grid">
     <div class="card"><div class="big-number">2026</div><p>Hype de IA generativa, agentes e aplicações com LLMs.</p></div>
-    <div class="card"><div class="big-number">2019</div><p>O ano em que começou a história do algoritmo deste projeto.</p></div>
+    <div class="card"><div class="big-number">2018*</div><p>O ano em que começou a história do algoritmo deste projeto.</p></div>
   </div>
   <p style="margin-top:26px;color:var(--accent2);font-weight:700">E se eu disser que o algoritmo principal não usa LLMs?</p>
+  <p class="small" style="margin-top:12px">Somente pelo scholar temos +17k resultados com as palavras-chave: "Immunohistochemistry" AND "Breast Cancer" AND ("Cell Counting" OR "Nuclei Detection" OR "Automated Quantification" OR "Allred Score") AND ("Software" OR "Framework" OR "Tool")</p>
   <aside class="notes-content" hidden>
     <p>Fazer uma pausa depois da pergunta. Perguntar rapidamente ao público quem já usou LLM em algum projeto. Explicar que a palestra não é contra IA generativa: é sobre escolher a ferramenta de acordo com o problema.</p>
   </aside>
 </section>
 
 <section class="slide" data-title="Tudo começou em 2019">
-  <div class="kicker">07 · A origem</div>
+  <div class="kicker">10 · A origem</div>
   <h2>Tudo começou com um problema real</h2>
   <p>Na análise de câncer de mama, a imuno-histoquímica ajuda a avaliar biomarcadores importantes para decisões terapêuticas.</p>
   <div class="grid">
@@ -205,70 +244,74 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
       </ul>
     </div>
   </div>
-  <p class="small">Inserir aqui uma imagem ilustrativa de lâmina histopatológica/IHQ, autorizada para apresentação.</p>
   <aside class="notes-content" hidden>
     <p>Explicar IHQ em linguagem simples: uma técnica que marca proteínas nas células para ajudar a caracterizar o tumor. Evitar entrar em condutas clínicas. Reforçar que a proposta computacional é apoiar quantificação, não substituir o patologista.</p>
   </aside>
 </section>
 
+<section class="slide" data-title="O que é IHQ">
+  <div class="kicker">11 · Entendendo a imagem</div>
+  <h2>O que é imuno-histoquímica?</h2>
+  <p>É uma técnica que usa marcadores para revelar proteínas específicas no tecido. Na análise do câncer de mama, por exemplo, ajuda a observar biomarcadores como ER e PR.</p>
+  <figure style="margin:10px 0 0;width:100%">
+    <div class="placeholder" style="min-height:clamp(210px,34vh,350px);padding:12px;position:relative;border:0;background:transparent">
+      <img src="images/allred_score.jpeg" alt="Diagrama do Escore de Allred: proporção e intensidade da coloração, somadas para formar a pontuação total" style="width:100%;height:100%;object-fit:contain;position:absolute;inset:0" onload="this.nextElementSibling.hidden=true" onerror="this.remove()">
+      <span>[images/allred_score.jpeg]</span>
+    </div>
+    <figcaption class="small" style="text-align:center;margin-top:4px">O Escore de Allred combina proporção e intensidade da coloração.</figcaption>
+  </figure>
+  <aside class="notes-content" hidden>
+    <p>Explicar de forma simples: a imuno-histoquímica, ou IHQ, usa anticorpos e uma reação de coloração para evidenciar proteínas específicas em uma amostra de tecido. A imagem mostra o Escore de Allred, que combina proporção de células marcadas e intensidade da coloração. A análise computacional da pesquisa busca apoiar essa quantificação; não é uma ferramenta clínica pronta nem substitui o patologista.</p>
+  </aside>
+</section>
+
 <section class="slide" data-title="O desafio">
-  <div class="kicker">08 · O problema</div>
+  <div class="kicker">12 · O problema</div>
   <h2>Digitalizar uma lâmina inteira ainda pode exigir um investimento muito alto</h2>
-  <p>Hoje, scanners WSI especializados capturam a lâmina inteira para visualização digital.</p>
+  <p>Hoje, scanners WSI especializados capturam a lâmina inteira para visualização digital. </p>
   <div class="grid">
     <div class="card">
-      <div class="big-number" style="font-size:clamp(27px,3.3vw,44px)">Dezenas a centenas<br>de milhares de dólares</div>
-      <p>Faixa indicativa para scanners WSI; varia conforme capacidade, resolução, fabricante e recursos.</p>
+      <div class="big-number" style="font-size:clamp(27px,3.3vw,44px)">US$ 100 mil – US$ 400 mil</div>
+      </br></br>
+      <p>Cada WSI pode ter na casa de Giga-pixels.</p>
+      <p>Estimativa para um scanner WSI de alta capacidade (&gt;100 lâminas).</p>
     </div>
     <div class="card">
-      <h3>E o custo não termina no equipamento</h3>
-      <p>Armazenamento, infraestrutura de TI, processamento, software, manutenção e suporte também entram na conta.</p>
+      <div class="big-number">8 </div>
+      <h3>Soluções completas para usuário final</h3>
+      <p>A revisão encontrou 1.246 registros iniciais</p>
     </div>
   </div>
-  <p class="quote" style="margin-top:24px;color:var(--accent2)">Precisamos de toda essa infraestrutura para começar?</p>
+  <p class="small" style="margin-top:12px">Além do scanner: armazenamento, infraestrutura de TI, software, manutenção e suporte. </p>
+  <p class="quote" style="margin-top:16px;color:var(--accent2);font-size:clamp(22px,2.6vw,34px);max-width:100%">Precisamos de toda essa infraestrutura para começar?</p>
   <aside class="notes-content" hidden>
-    <p>Quando falamos em patologia digital, já existem soluções no mercado que permitem digitalizar uma lâmina inteira e trabalhar com essas imagens diretamente no computador. O problema é que essas soluções utilizam equipamentos bastante especializados, chamados scanners WSI, que podem custar dezenas ou até centenas de milhares de dólares. E não estamos falando apenas do equipamento: também precisamos considerar armazenamento, infraestrutura, processamento e manutenção. Isso acaba criando uma barreira para laboratórios e instituições que não possuem tantos recursos para investir nesse tipo de tecnologia. Foi nesse contexto que surgiu uma das motivações do nosso projeto: será que precisamos de toda essa infraestrutura para começar a trabalhar com imagens digitais e desenvolver soluções de análise? A faixa exibida é indicativa da literatura e não deve ser atribuída à dissertação sem confirmar o trecho e a referência.</p>
+    <p>A dissertação descreve o custo do WSI como uma barreira financeira, mas não informa um preço numérico para o scanner. A faixa de US$ 100 mil a US$ 400 mil vem do white paper da Digital Pathology Association e se refere a um scanner WSI de alta capacidade, com mais de 100 lâminas. Deixar claro que é uma estimativa da literatura, não um preço universal nem um valor citado diretamente pela dissertação. Na revisão sistemática, foram identificados 1.246 registros; 41 estudos relevantes foram separados como métodos algorítmicos sem framework completo; após leitura integral e critério de solução para usuário final, 8 trabalhos foram incluídos como sistemas/ferramentas correlatos. Somar os custos de armazenamento, infraestrutura, software, manutenção e suporte. Fechar perguntando: “Precisamos de toda essa infraestrutura para começar?”</p>
   </aside>
 </section>
 
 <section class="slide" data-title="A arquitetura">
-  <div class="kicker">09 · A solução</div>
+  <div class="kicker">13 · A solução</div>
   <h2>Uma arquitetura de baixo custo: Mobile + Cloud</h2>
-  <p>A dissertação propõe uma arquitetura que integra captura por smartphone, processamento em nuvem e visualização dos resultados em ambiente web/aplicativo.</p>
-  <div class="flow">
+  <p>A soluçãopropõe uma arquitetura que integra captura por smartphone, processamento em nuvem e visualização dos resultados em ambiente web/aplicativo.</p>
+  <div class="flow architecture-flow">
     <span>Microscópio + smartphone</span><b class="arrow">→</b>
     <span>Aplicativo</span><b class="arrow">→</b>
     <span>Serviços em nuvem</span><b class="arrow">→</b>
     <span>Máscaras e resultados</span>
   </div>
-  <div class="placeholder">[INSERIR diagrama da arquitetura real da dissertação ou captura do aplicativo]</div>
   <aside class="notes-content" hidden>
     <p>Fazer a transição do slide anterior: “Foi aí que começamos a explorar uma alternativa: utilizar um smartphone acoplado a um microscópio e aproveitar a infraestrutura de processamento em nuvem.” A proposta explora microfotografias de smartphone e processamento em nuvem. Não afirmar que substitui scanners ou está pronta para uso clínico.</p>
   </aside>
 </section>
 
-<section class="slide" data-title="O que é IHQ">
-  <div class="kicker">10 · Entendendo a imagem</div>
-  <h2>O que é imuno-histoquímica?</h2>
-  <p>É uma técnica que usa marcadores para revelar proteínas específicas no tecido. Na análise do câncer de mama, por exemplo, ajuda a observar biomarcadores como ER e PR.</p>
-  <div class="grid">
-    <div class="placeholder" style="min-height:clamp(220px,36vh,390px)">[INSERIR IMAGEM 1: tecido corado por IHQ]</div>
-    <div class="placeholder" style="min-height:clamp(220px,36vh,390px)">[INSERIR IMAGEM 2: detalhe ampliado com células/núcleos marcados]</div>
-  </div>
-  <p class="small" style="margin-top:16px">A coloração ajuda a visualizar a presença dos marcadores; a pesquisa busca apoiar a quantificação dessas imagens.</p>
-  <aside class="notes-content" hidden>
-    <p>Explicar de forma simples: a imuno-histoquímica, ou IHQ, usa anticorpos e uma reação de coloração para evidenciar proteínas específicas em uma amostra de tecido. Para o público, basta entender que a imagem colorida dá pistas sobre a presença dos biomarcadores nas células. Usar as duas imagens para mostrar primeiro a lâmina e depois uma região ampliada. A análise computacional é uma pesquisa para apoiar a quantificação, não uma ferramenta clínica pronta nem substituta do patologista.</p>
-  </aside>
-</section>
-
 <section class="slide" data-title="Três abordagens">
-  <div class="kicker">11 · A comparação</div>
+  <div class="kicker">14 · A comparação</div>
   <h2>Não foi uma disputa entre “IA” e “não IA”</h2>
   <p>A pesquisa implementou e comparou três abordagens para segmentação nuclear:</p>
   <div class="grid three">
-    <div class="card"><span class="tag">Método clássico</span><h3>Limiarização adaptativa</h3><p>Processamento de imagem tradicional.</p></div>
-    <div class="card"><span class="tag">Método estatístico</span><h3>Distância de Mahalanobis</h3><p>Com expansão polinomial.</p></div>
-    <div class="card"><span class="tag">Deep Learning</span><h3>Faster R-CNN</h3><p>Abordagem baseada em aprendizado profundo.</p></div>
+    <div class="card approach-card"><span class="tag">Método clássico</span><h3>Limiarização adaptativa</h3><p>Processamento de imagem tradicional.</p></div>
+    <div class="card approach-card"><span class="tag">Método estatístico</span><h3>Distância de Mahalanobis</h3><p>Com expansão polinomial.</p></div>
+    <div class="card approach-card"><span class="tag">Deep Learning</span><h3>Faster R-CNN</h3><p>Abordagem baseada em aprendizado profundo.</p></div>
   </div>
   <p style="margin-top:24px;color:var(--accent2)">A pergunta não era qual tecnologia está na moda, mas qual funciona melhor para o problema.</p>
   <aside class="notes-content" hidden>
@@ -278,74 +321,28 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
 </section>
 
 <section class="slide" data-title="Resultados técnicos">
-  <div class="kicker">12 · O que os resultados mostraram</div>
-  <h2>Cada abordagem teve um comportamento diferente</h2>
+  <div class="kicker">15 · Os pontos fortes</div>
+  <h2>Cada método tem uma vantagem diferente</h2>
   <div class="grid three">
-    <div class="card">
-      <div class="big-number">&lt;10%</div>
-      <h3>Recall</h3>
-      <p>Método clássico para células negativas: limitação importante na detecção.</p>
+    <div class="card approach-card">
+      <span class="tag">Processamento clássico</span>
+      <h3>Leve e simples de integrar</h3>
+      <p>Exige menos processamento e ajudou a validar o fluxo completo do aplicativo à nuvem.</p>
     </div>
-    <div class="card">
-      <div class="big-number">≈0,76</div>
-      <h3>F1-Score</h3>
-      <p>Método estatístico: desempenho mais equilibrado.</p>
+    <div class="card approach-card">
+      <span class="tag">Mahalanobis</span>
+      <h3>Equilíbrio sem GPU dedicada</h3>
+      <p>Uma opção intermediária para separar células sem exigir hardware especializado.</p>
     </div>
-    <div class="card">
-      <div class="big-number">&gt;82%</div>
-      <h3>Acurácia global</h3>
-      <p>Faster R-CNN: melhor desempenho geral reportado na avaliação.</p>
+    <div class="card approach-card">
+      <span class="tag">Deep Learning</span>
+      <h3>Mais robusto às variações</h3>
+      <p>Lidou melhor com células de formatos diferentes e reduziu marcações incorretas.</p>
     </div>
   </div>
-  <p class="small" style="margin-top:20px">Valores resumidos do abstract da dissertação. Conferir tabelas, classes, conjunto de teste e métricas exatas antes da apresentação final.</p>
+  <p style="margin-top:24px;color:var(--accent2)">O melhor caminho depende do problema e dos recursos disponíveis.</p>
   <aside class="notes-content" hidden>
-    <p>Explicar sem exagerar: o método clássico teve limitações severas, o estatístico foi mais equilibrado e o Faster R-CNN teve o melhor resultado global, com robustez ao pleomorfismo celular. Não comparar métricas diferentes como se fossem equivalentes. Abrir a dissertação para conferir os detalhes experimentais.</p>
-  </aside>
-</section>
-
-<section class="slide" data-title="Demonstração visual">
-  <div class="kicker">13 · Na prática</div>
-  <h2>Do campo microscópico à visualização das máscaras</h2>
-  <div class="grid">
-    <div class="placeholder">[IMAGEM 1: microfotografia original]</div>
-    <div class="placeholder">[IMAGEM 2: resultado da segmentação / máscara]</div>
-  </div>
-  <p style="margin-top:22px">Mostrar o que o sistema recebe, o que processa e o que devolve ao usuário.</p>
-  <p class="small">Se possível, incluir um pequeno vídeo ou GIF do aplicativo funcionando.</p>
-  <aside class="notes-content" hidden>
-    <p>Este é o slide para tornar a pesquisa concreta. Usar uma imagem real e uma saída real do trabalho. Explicar visualmente o que foi identificado e o que ainda exige avaliação especializada. Se houver demonstração ao vivo, ter um vídeo gravado como plano B.</p>
-  </aside>
-</section>
-
-<section class="slide" data-title="Linha do tempo">
-  <div class="kicker">14 · A jornada</div>
-  <h2>De um projeto acadêmico a uma trajetória de inovação</h2>
-  <div class="flow">
-    <span>2018**<br><small>Início do algoritmo</small></span><b class="arrow">→</b>
-    <span>TCCs<br><small>Continuidade</small></span><b class="arrow">→</b>
-    <span>Mestrado<br><small>Comparação e validação</small></span><b class="arrow">→</b>
-    <span>2025–2026<br><small>Reconhecimento e inovação</small></span>
-  </div>
-  <div class="placeholder">[INSERIR linha do tempo com datas reais, fotos, nomes dos trabalhos e marcos do projeto]</div>
-  <aside class="notes-content" hidden>
-    <p>Confirmar a cronologia exata: em que ano foi cada TCC, quando o projeto ficou parado ou foi retomado, quando começou o mestrado e quando cada resultado aconteceu. Não sugerir continuidade ininterrupta se houve intervalos.</p>
-  </aside>
-</section>
-
-<section class="slide" data-title="Conquistas">
-  <div class="kicker">15 · Os resultados além do algoritmo</div>
-  <h2>O que essa jornada já gerou?</h2>
-  <div class="grid three">
-    <div class="card"><div class="big-number">1</div><h3>Registro</h3><p>Registro de propriedade intelectual.</p></div>
-    <div class="card"><div class="big-number">1</div><h3>Prêmio</h3><p>Melhor projeto de aceleração de startup.</p></div>
-    <div class="card"><div class="big-number">2</div><h3>Artigos</h3><p>Publicações na IEEE.</p></div>
-    <div class="card"><div class="big-number">1</div><h3>Pôster</h3><p>Apresentação em conferência de patologia.</p></div>
-    <div class="card"><div class="big-number">1</div><h3>Dissertação</h3><p>Pesquisa de mestrado concluída.</p></div>
-    <div class="card"><div class="big-number">2</div><h3>TCCs</h3><p>Trabalhos de conclusão relacionados à trajetória.</p></div>
-  </div>
-  <p class="small" style="margin-top:16px">Confirmar se todos os resultados são do mesmo projeto e identificar corretamente os anos e instituições.</p>
-  <aside class="notes-content" hidden>
-    <p>Evitar apenas listar números. Escolher 2 ou 3 conquistas para contar rapidamente o que representaram: publicação, validação externa, reconhecimento e continuidade. Incluir logos/capas/fotos se houver autorização.</p>
+    <p>Apresentar os pontos fortes sem dizer que um método vence em todos os cenários. O clássico é computacionalmente leve e foi integrado ao aplicativo como prova de conceito, mas teve dificuldade para detectar células negativas. Mahalanobis teve equilíbrio entre as classes e pode rodar sem GPU dedicada, sendo uma alternativa para triagem rápida em hardware limitado. Faster R-CNN lidou melhor com a variação de formato das células e produziu menos marcações incorretas, mas exige dados anotados e mais capacidade computacional. A pesquisa é uma prova de conceito, não uma ferramenta clínica pronta.</p>
   </aside>
 </section>
 
@@ -378,18 +375,19 @@ background:#f4f6fb;color:#172033;border-radius:14px;padding:18px 20px;box-shadow
 
 <section class="slide" data-title="Da pesquisa à inovação">
   <div class="kicker">17 · O próximo passo</div>
-  <h2>Como fazer a pesquisa continuar depois da universidade?</h2>
-  <p>Uma pesquisa pode abrir caminhos para colaboração, propriedade intelectual, empreendedorismo e financiamento.</p>
-  <div class="grid">
-    <div class="card"><h3>Oportunidades na saúde</h3><p>Patologia digital, ferramentas de apoio, acessibilidade e pesquisa aplicada.</p></div>
-    <div class="card"><h3>Fomento à inovação</h3><p>Editais e programas podem apoiar a evolução de uma prova de conceito.</p></div>
+  <h2>Quer descobrir o que está sendo priorizado?</h2>
+  <p>Editais públicos podem dar pistas sobre problemas que governos e instituições querem ajudar a resolver.</p>
+  <div class="grid three">
+    <div class="card"><h3>Acompanhe</h3><p>FAPESC, Finep, CNPq e fundações estaduais publicam chamadas de pesquisa e inovação.</p></div>
+    <div class="card"><h3>Observe os temas</h3><p>Chamadas recentes incluem saúde, educação, energia, segurança pública e desenvolvimento tecnológico.</p></div>
+    <div class="card"><h3>Leia as regras</h3><p>Confira quem pode participar e se o apoio é para pesquisa, bolsas ou desenvolvimento de projetos.</p></div>
   </div>
-  <div class="card" style="margin-top:18px">
-    <h3>O caso do projeto</h3>
-    <p>Aprovação em edital de inovação da FAPESC, com previsão de recurso para financiar a atuação de um desenvolvedor na continuidade do aplicativo.</p>
-  </div>
+  <p style="margin-top:20px;color:var(--accent2)">Editais também mostram quais problemas estão mobilizando recursos.</p>
+  <p class="small">Para começar: <a href="https://fapesc.sc.gov.br/chamadas-em-andamento/" target="_blank" rel="noopener">chamadas da FAPESC</a> · <a href="https://www.finep.gov.br/chamadas-publicas" target="_blank" rel="noopener">chamadas da Finep</a></p>
   <aside class="notes-content" hidden>
-    <p>Explicar o edital específico, o que foi aprovado, qual é o papel do recurso e o que ainda falta para dar continuidade ao aplicativo. Não generalizar: deixar claro que editais têm regras, contrapartidas e prestação de contas. Confirmar nome oficial do programa e modalidade de bolsa/remuneração.</p>
+    <p>Apresentar editais como um ponto de partida para quem tem uma ideia: acompanhar chamadas, notar os temas recorrentes e procurar uma instituição ou grupo que possa ajudar a transformar a ideia em proposta. Exemplos recentes da FAPESC incluem chamadas voltadas a educação, segurança pública, agropecuária, pesquisa e inovação; chamadas da Finep também contemplaram temas como saúde e transição energética. As prioridades e os prazos mudam, então indicar as páginas oficiais para consulta atualizada.</p>
+    <p>Não tratar editais como um retrato completo do que é cientificamente relevante: eles refletem prioridades e regras de programas específicos. O apoio pode assumir formas diferentes, como bolsas, recursos para pesquisa ou fomento ao desenvolvimento, e cada chamada define público elegível, contrapartidas e despesas permitidas. Se mencionar o edital ligado ao projeto, explicar o que foi aprovado e o estágio atual sem sugerir que o aplicativo já está em uso clínico.</p>
+    <p><strong>Referências oficiais:</strong> <a href="https://fapesc.sc.gov.br/chamadas-em-andamento/" target="_blank" rel="noopener">Chamadas em andamento da FAPESC</a>; <a href="https://fapesc.sc.gov.br/edital-de-chamada-publica-fapesc-sed-n-o-054-2026-programa-de-fomento-a-pesquisa-e-inovacao-para-o-desenvolvimento-da-educacao-catarinense/" target="_blank" rel="noopener">FAPESC/SED 54/2026 — pesquisa e inovação em educação</a>; <a href="https://fapesc.sc.gov.br/edital-de-chamada-publica-fapesc-ssp-n-o-041-2026-programa-de-inovacao-ciencia-e-tecnologia-em-seguranca-publica-de-santa-catarina-inovaseg-sc/" target="_blank" rel="noopener">FAPESC/SSP 41/2026 — inovação em segurança pública</a>; <a href="https://www.finep.gov.br/chamadas-publicas" target="_blank" rel="noopener">Chamadas públicas da Finep</a>; <a href="https://www.finep.gov.br/w/aten%C3%A7%C3%A3o-novos-prazos" target="_blank" rel="noopener">Finep — exemplo de chamadas recentes em saúde e transição energética</a>.</p>
   </aside>
 </section>
 

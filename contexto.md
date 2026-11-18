@@ -96,7 +96,7 @@ Estamos retomando pelo Slide 4: barreira de custo dos scanners WSI e preparaçã
 - O slide do desafio/custo foi atualizado para destacar scanners WSI, a faixa indicativa “dezenas a centenas de milhares de dólares”, custos de infraestrutura associados e a pergunta de transição. O valor não é atribuído à dissertação.
 - As notas do slide incluem o speech de custo e deixam explícito que a faixa precisa ser validada com fonte antes de qualquer atribuição específica.
 - A transição para Mobile + Cloud foi adicionada às notas do slide de arquitetura.
-- Foi inserido, imediatamente após o slide de arquitetura, um slide explicando IHQ em linguagem simples, com dois espaços reservados para imagens: visão do tecido corado e detalhe ampliado.
+- Foi inserido um slide explicando IHQ em linguagem simples. Em atualização posterior, ele foi movido para depois de “A origem” e passou a usar uma imagem única do Escore de Allred (`images/allred_score.jpeg`).
 - A numeração dos slides foi atualizada. O arquivo agora contém 14 slides.
 - Nas notas do slide “Não foi uma disputa entre ‘IA’ e ‘não IA’”, registrar que também foi considerada a possibilidade de usar IA generativa para a tarefa e deixar o espaço `[ADICIONAR LINK DO ARTIGO]` para uma referência sobre confiabilidade/segurança nesse contexto. Evitar generalizar que IA generativa é insegura.
 
@@ -115,3 +115,24 @@ Estamos retomando pelo Slide 4: barreira de custo dos scanners WSI e preparaçã
 - Foi acrescentada uma cópia do Slide 3 imediatamente após ele, com as mesmas imagens, cards e destaque do algoritmo clássico. A numeração foi atualizada e o deck agora tem 19 slides.
 - No Slide 4, `Screenshot 2026-11-16 at 22.53.48.png` aparece à esquerda como gabarito e `5377_1_1_mahala.png` à direita como resultado da distância de Mahalanobis.
 - No Slide 3, as imagens anteriores foram substituídas por `Screenshot 2026-11-16 at 22.53.48.png` à esquerda como gabarito e `5377_1_1_iou_classic.jpg` à direita como resultado do método clássico.
+
+## Atualização do Slide 9 — 17 nov. 2026
+
+- A seção de custo da dissertação apresenta a barreira financeira do WSI, mas não informa um preço numérico do scanner.
+- Para exibir uma faixa verificável, o Slide 9 agora usa **US$ 100 mil–US$ 400 mil** para um scanner WSI de alta capacidade (>100 lâminas), estimativa do white paper da Digital Pathology Association (2021), com link no próprio slide. Não atribuir essa faixa diretamente à dissertação.
+- Também foi incluído o resultado da revisão sistemática: 1.246 registros identificados; 41 estudos com métodos algorítmicos relevantes sem framework completo; 8 sistemas/ferramentas incluídos como soluções completas para usuário final. A fonte é o Capítulo 3, Tabelas 2–3 da dissertação, linkado no slide.
+- A pergunta de transição no Slide 9 recebeu tamanho de fonte responsivo menor para evitar uma quebra visual desproporcional em telas mais estreitas.
+- Na capa, foi fixada uma quebra de linha antes de “IA Generativa”, mantendo as duas palavras juntas na segunda linha.
+- Os limites fixos de largura dos títulos, subtítulos, parágrafos e frases de destaque foram removidos para que o texto use toda a largura interna do slide e quebre apenas conforme o espaço disponível.
+- No slide Mobile + Cloud, os componentes do fluxo foram ampliados e centralizados horizontalmente; o fluxo pode quebrar em linhas mantendo o alinhamento central em telas estreitas.
+- Ajuste seguinte: o fluxo Mobile + Cloud deve permanecer sempre em uma única linha; em telas estreitas, usa rolagem horizontal em vez de quebrar/empilhar os componentes.
+- O slide “Entendendo a imagem” foi movido para logo após “A origem”; os números dos slides de problema e arquitetura foram atualizados.
+- O slide “O que os resultados mostraram” foi removido a pedido da usuária. Os slides posteriores foram renumerados; a apresentação agora tem 18 slides.
+- Removido “A jornada” (linha do tempo); os slides seguintes foram renumerados. O contador está ajustado para 18 slides.
+- O Slide 12 foi reformulado para mostrar, em linguagem intuitiva e sem métricas acadêmicas, as vantagens do método clássico, de Mahalanobis e do Faster R-CNN, com ressalvas nas notas do apresentador.
+- Removido o slide “14 · Os resultados além do algoritmo”; os slides seguintes foram renumerados e o contador atualizado para 17 slides.
+- O slide “O próximo passo” foi reformulado: editais públicos como ponto de partida para identificar temas priorizados e possíveis caminhos de fomento. O slide traz links oficiais da FAPESC e da Finep; as notas esclarecem que temas, prazos, elegibilidade e tipo de apoio variam conforme a chamada. Exemplos de temas recentes foram conferidos em páginas oficiais em 17/11/2026.
+- Foram acrescentados às notas do slide “O próximo passo” links oficiais para a listagem de chamadas da FAPESC, chamadas específicas sobre educação e segurança pública, chamadas públicas da Finep e uma chamada recente da Finep usada como exemplo de temas.
+- Removido o slide “13 · Na prática”; os slides seguintes foram renumerados e o contador atualizado para 16 slides.
+- Foram inseridos três slides logo após a capa: dois espaços de imagem para publicações na IEEE CBMS; um para registro de software e dissertação; e um para prêmio de incentivo à inovação e prêmio da Sociedade Brasileira de Patologia. A pergunta que antes abria a parte técnica foi movida para depois desses slides, os kickers foram renumerados e o deck agora tem 19 slides. Os novos slides fazem a provocação de que um projeto sem IA generativa no núcleo pode gerar publicações, registro, dissertação e reconhecimento.
+- Incluída nas notas do slide “Reconhecimento e inovação” a referência enviada pela usuária para os trabalhos premiados no CBPato 2024, da Sociedade Brasileira de Patologia: https://congressodepatologia.org.br/confira-a-relacao-de-trabalhos-premiados-no-cbpato-2024-sbp-news-05-06-2024/.
